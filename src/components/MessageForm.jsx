@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { sendMessage, isTyping } from 'react-chat-engine'
+import { PhotoRounded, PublishRounded } from '@material-ui/icons/';
 
 export default function MessageForm(props) {
   const [value, setValue] = useState('')
@@ -36,7 +37,7 @@ export default function MessageForm(props) {
       />
       <label htmlFor="upload-button">
         <span className="image-button">
-          IMG
+          <PhotoRounded />
         </span>
         <input 
           type="file"
@@ -45,7 +46,7 @@ export default function MessageForm(props) {
           style={{ display: "none" }}
           onChange={handleUpload}
         />
-        <button type="submit" className="send-button">Submit</button>
+        <button type="submit" className="send-button"><PublishRounded /></button>
       </label>
     </form>
   )
