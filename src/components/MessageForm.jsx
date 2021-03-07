@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { sendMessage, isTyping } from 'react-chat-engine'
-import { PhotoRounded, PublishRounded } from '@material-ui/icons/';
+import { PhotoRounded } from '@material-ui/icons/';
+import SendRoundedIcon from '@material-ui/icons/SendRounded';
 
 export default function MessageForm(props) {
   const [value, setValue] = useState('')
@@ -46,7 +47,7 @@ export default function MessageForm(props) {
           style={{ display: "none" }}
           onChange={handleUpload}
         />
-        <button type="submit" className="send-button"><PublishRounded /></button>
+        <button type="submit" className="send-button"><SendRoundedIcon style={{ transform: "rotate(-23deg)" }} /></button>
       </label>
     </form>
   )
