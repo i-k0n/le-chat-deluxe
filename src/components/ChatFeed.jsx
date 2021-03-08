@@ -33,8 +33,8 @@ export default function ChatFeed(props) {
       const isMyMessage = userName === message.sender.username
 
       return (
-        <div key={`msg_${index}`} style={{ width: '100%'}}>
-          <div className="message-block">
+        <>
+          <div key={`msg_${index}`} className={`message-block ${isMyMessage ? 'mine' : 'theirs'}`}>
             {
               isMyMessage 
                 ? <MyMessage message={message} /> 
@@ -44,7 +44,7 @@ export default function ChatFeed(props) {
           <div className="read-receipts" style={{ marginRight: isMyMessage ? '18px' : '0px', marginLeft: isMyMessage ? '0px' : '68px' }}>
             {/* {renderReadReceipts(message, isMyMessage)} */}
           </div>
-        </div>
+        </>
       )
     })
   }
