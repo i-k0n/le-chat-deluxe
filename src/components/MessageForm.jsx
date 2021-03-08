@@ -31,7 +31,7 @@ export default function MessageForm(props) {
     <form className="message-form" onSubmit={handleSubmit}>
       <input 
         className="message-input"
-        placeholder="Send a message..."
+        placeholder="Enter message..."
         value={value}
         onChange={handleChange}
         onSubmit={handleSubmit}
@@ -40,15 +40,17 @@ export default function MessageForm(props) {
         <span className="image-button">
           <PhotoRounded />
         </span>
-        <input 
-          type="file"
-          multiple={false}
-          id="upload-button"
-          style={{ display: "none" }}
-          onChange={handleUpload}
-        />
-        <button type="submit" className="send-button"><SendRoundedIcon style={{ transform: "rotate(-23deg)" }} /></button>
       </label>
+      <input 
+        type="file"
+        multiple={false}
+        id="upload-button"
+        style={{ display: "none" }}
+        onChange={handleUpload}
+      />
+      <button type="submit" className="send-button">
+        <SendRoundedIcon style={{ transform: "rotate(-23deg)" }} />
+      </button>
     </form>
   )
 }
