@@ -9,9 +9,51 @@ html, body {
   padding: 0;
 }
 
+/* CHAT HEADER */
+
+.chat-title-container {
+  display: flex;
+  height: 3rem;
+  font-size: 1rem;
+  background-color: #373635;
+  border-radius: .375rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  margin: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+}
+
+.chat-title {
+  font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
+  
+  color: #F0ECE4;
+}
+
+.chat-clock {
+  color: #777;
+  display: flex;
+}
+
+.clock-time {
+
+}
+
+.clock-date {
+  margin-left: .75rem;
+}
+
+/* CHAT FEED */
+
 .chat-feed {
   background-color: #4B4948;
   height: 100vh;
+  margin-top: -4px;
+  padding-top: 64px;
 }
 
 .message-block {
@@ -69,6 +111,8 @@ html, body {
 .message {
   width: fit-content;
   padding: 12px 16px;
+  font-family: 'Open Sans', 'Noto Sans', Roboto, sans-serif;
+  font-weight: normal;
 }
 
 .mine .message {
