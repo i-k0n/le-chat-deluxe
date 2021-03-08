@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { sendMessage, isTyping } from 'react-chat-engine'
 import { PhotoRounded } from '@material-ui/icons/';
-import SendRoundedIcon from '@material-ui/icons/SendRounded';
+import sendIcon from '../assets/sendIcon.svg';
 
 export default function MessageForm(props) {
   const [value, setValue] = useState('')
@@ -36,7 +36,7 @@ export default function MessageForm(props) {
         onChange={handleChange}
         onSubmit={handleSubmit}
       />
-      <label htmlFor="upload-button">
+      <label htmlFor="upload-button" style={{ height: "40px" }}>
         <span className="image-button">
           <PhotoRounded />
         </span>
@@ -49,7 +49,7 @@ export default function MessageForm(props) {
         onChange={handleUpload}
       />
       <button type="submit" className="send-button">
-        <SendRoundedIcon style={{ transform: "rotate(-23deg)" }} />
+        <img src={sendIcon} alt="Send" />
       </button>
     </form>
   )
