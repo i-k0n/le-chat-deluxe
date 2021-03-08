@@ -3,6 +3,84 @@
   font-family: 'Noto Sans', Roboto, sans-serif;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.chat-feed {
+  background-color: #4B4948;
+  height: 100vh;
+}
+
+.message-block {
+  margin: 0 1rem;
+}
+
+.message-row {
+  width: 100%;
+  display: flex;
+  padding: 8px 0;
+  align-items: flex-start;
+}
+
+.message-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  color: white;
+  text-align: center;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 48px;
+  margin: 8px 0;
+}
+
+.message-content {
+  margin-left: .75rem;
+  padding: 8px 0;
+}
+
+.message-meta {  
+  display: flex;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.mine .message-meta {
+  justify-content: flex-end;
+}
+
+.message-sender {
+  color: #aaa;
+}
+
+.message-timestamp {
+  margin-left: .75rem;
+  color: #777;
+}
+
+.message {
+  width: fit-content;
+  padding: 12px 16px;
+}
+
+.mine .message {
+ background-color: #1E1C1A;
+ color: #E8BDAC;
+ border-radius: 20px 4px 20px 20px;
+}
+
+.message-content.mine {
+ float: right;
+}
+
+.theirs .message {
+  background-color: #F0ECE4;
+  color: #383635;
+  border-radius: 4px 20px 20px 20px;
+}
+
 .message-image {
   width: 150px;
   height: 150px;
@@ -14,11 +92,15 @@
 /* MESSAGE FORM */
 .message-form-container {
   display: flex;
+  padding: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .message-form {
   display: flex;
-  padding: 1rem;
   width: 100%;
   background-color: #4B4948;
 }
@@ -29,11 +111,17 @@
   height: 40px;
   border-radius: 20px 0 0 20px;
   border: 0;
-  padding: .55rem 1.5rem .55rem .5rem;
+  padding: .55rem 1.5rem .55rem 1.25rem;
   box-sizing: border-box;
   flex-grow: 1;
   color: #F0ECE4;
 }
+
+.message-input::-webkit-input-placeholder {
+  color: #F0ECE4;
+  opacity: .6;
+  font-weight: 300;
+} 
 
 .upload-button {
   display: flex;
@@ -56,6 +144,6 @@
     background-color: transparent;
     height: 40px;
     width: 40px;
-    padding: .3rem 0 .5rem .5rem;
-    margin-left: .75rem;
+    padding: 0;
+    margin-left: .5rem;
 }

@@ -1,6 +1,12 @@
 import React from 'react'
 
 export default function MyMessage({ message }) {
+  const timestamp = new Date(message.created)
+  const options = {
+    hour: "2-digit", 
+    minute: "2-digit"
+  }
+
   if(message?.attachments?.length > 0) {
     return (
       <img 
@@ -12,8 +18,13 @@ export default function MyMessage({ message }) {
     )
   }
   return (
-    <div className="message" style={{ float: 'right', marginRight: '18px', color: 'white', backgroundColor: '#3B2A50' }} >
-      {message.text}
+    <div className="message-content mine">
+      <div className="message-meta">
+        <span className="message-timestamp">{timestamp.toLocaleString("en-US", options)}</span>
+      </div>
+      <div className="message">
+        {message.text}
+      </div>
     </div>
   )
 }
