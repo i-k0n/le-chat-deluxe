@@ -1,4 +1,3 @@
-/* CHAT STYLES */
 * {
   font-family: 'Noto Sans', Roboto, sans-serif;
   box-sizing: border-box;
@@ -8,6 +7,45 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
+/* LEFT PANEL */
+
+.left-panel {
+  background-color: #373635;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.5rem 0 1rem;
+  font-family: 'Open Sans', 'Noto Sans', Roboto, sans-serif;
+}
+
+.user-avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}
+
+.user-firstname {
+  font-size: 1.5rem;
+  color: #E8BDAC;
+  font-family: Roboto;
+  margin-top: .75rem;
+}
+
+.user-username {
+  font-size: 1rem;
+  color: #777;
+  margin-top: .25rem;
+}
+
+/* CHAT STYLES */
+
 
 /* CHAT HEADER */
 
@@ -52,7 +90,7 @@ html, body {
 .chat-feed {
   background-color: #4B4948;
   height: 100vh;
-  margin-top: -4px;
+  /* margin-top: -4px; */
   padding-top: 64px;
 }
 
