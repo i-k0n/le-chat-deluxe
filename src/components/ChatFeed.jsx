@@ -1,5 +1,4 @@
 import ChatHeader from './ChatHeader'
-import Clock from './Clock'
 import MessageForm from './MessageForm'
 import MyMessage from './MyMessage'
 import TheirMessage from './TheirMessage'
