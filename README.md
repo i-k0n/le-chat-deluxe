@@ -8,9 +8,9 @@ Le Chat Deluxe is a group chat application. It started as a UI design project wh
 
 ## Technologies
 
-[React](https://reactjs.org/) - Le Chat Deluxe is built using React
-[Chat Engine](https://chatengine.io/) - The underlying chat framework runs on Chat Engine
-[Axios](https://www.npmjs.com/package/axios) - API calls are made using Axios
+[React](https://reactjs.org/) - Le Chat Deluxe is built using React\
+[Chat Engine](https://chatengine.io/) - The underlying chat framework runs on Chat Engine\
+[Axios](https://www.npmjs.com/package/axios) - API calls are made using Axios\
 
 ## Vision
 
