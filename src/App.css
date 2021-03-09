@@ -44,6 +44,56 @@ html, body {
   margin-top: .25rem;
 }
 
+/* CONVERSATIONS LIST */
+
+.conversation-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 1rem;
+  font-size: .875rem;
+  color: #8B8882;
+}
+
+.conversation-container.active {
+  background-color: #4B4948;
+}
+
+.conversation-relative-time {
+
+}
+
+.conversation-content {
+  display: flex;
+  align-items: center;
+}
+
+.conversation-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.conversation-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.conversation-title {
+  display: flex;
+  font-size: 1rem;
+  color: #F0ECE4;
+  margin-bottom: .25rem;
+}
+
+.conversation-unread {
+  margin-left: .5rem;
+}
+
+.conversation-last-message {
+
+}
+
 /* CHAT STYLES */
 
 
