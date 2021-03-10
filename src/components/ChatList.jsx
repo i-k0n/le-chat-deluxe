@@ -21,20 +21,23 @@ export default function ChatList(props) {
   //   return readLastMessage
   // }
 
+  const sortChats = chats ? Object.values(chats) : []
+    sortChats.sort((a, b) => { 
+      const aDate = a.last_message.created ? new Date(a.last_message.created) : new Date(a.created)
+      const bDate = b.last_message.created ? new Date(b.last_message.created) : new Date(b.created)
+      return new Date(bDate) - new Date(aDate); 
+  })
+
+  console.log(sortChats)
+
   const renderChats = () => {
-    if (chats) {
-      return (chats && Object.keys(chats).map((chat, index) => {
-        if (!chat)
-          return (
-            <div className="no-chats" key={`chat_${index}`}>
-              No Chats
-            </div>
-          );
-        // console.log("chats: ", Object.keys(chats))
-        // console.log("Active chat: ", activeChat)
-        return <ChatListCard key={chat.id} props={chats} currentChat={chat} activeChat={activeChat} />;
-      }))
-    }
+    // return (chats && Object.keys(chats).map((chat, index) => {
+    return sortChats && sortChats.map((chat, index) => {
+      if (!chat) return <div key={`chat_${chat.id}`} />
+    
+      // console.log("chats: ", Object.keys(chats))
+      return <ChatListCard key={chat.id} props={sortChats} currentChat={chat.id} activeChat={activeChat} />;
+    })
   }
 
   return (
