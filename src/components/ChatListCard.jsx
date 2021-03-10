@@ -1,9 +1,19 @@
-// import daySinceSent from '../utilities/dateToString'
+import generalAvatar from '../assets/general-avatar.png'
 
 export default function ChatListCard({ props, currentChat, activeChat}) {
-  const chat = props[currentChat]
+  const chat = props.find(prop => prop.id === parseInt(currentChat))
 
-  // console.log("ChatList Props: ", chat)
+  // console.log("card props: ", props)
+
+  // get Avatar link
+  const getPersonObj = chat?.people.find(person => person.person.first_name === chat.title)
+  let getAvatar = getPersonObj && getPersonObj.person.avatar
+  if (!getAvatar) {
+    if (chat?.title === "General") {
+      getAvatar = generalAvatar
+    }
+  }
+
   // console.log("current chat: ", currentChat)
   // console.log("active chat: ", activeChat)
   // chat.id
@@ -20,7 +30,8 @@ export default function ChatListCard({ props, currentChat, activeChat}) {
     const sent = new Date(`${month} ${day} ${year}`).toString()
     return sent.substr(4, 6)
   }
-
+  
+  // show last message in chat list card
   let lastMessage = chat?.last_message?.text
   if (!lastMessage) {
       lastMessage = chat?.last_message?.attachments.length > 0 ?
@@ -34,13 +45,13 @@ export default function ChatListCard({ props, currentChat, activeChat}) {
   return (
     <div className={`conversation-container${isActiveChat ? ' active' : ''}`}>
       <div className="conversation-content">
-        <div className="conversation-avatar"></div>
+        <img className="conversation-avatar" src={getAvatar} alt={getPersonObj?.first_name || chat?.title} />
         <div className="conversation-info-container">
           <div className="conversation-title">{chat?.title}</div>
           <div className="conversation-last-message">{lastMessage}</div>
         </div>
       </div>
-      <div className="conversation-relative-time">{daySinceSent(chat.created)}</div>
+      <div className="conversation-relative-time">{daySinceSent(chat?.created)}</div>
     </div>
   )
 }
