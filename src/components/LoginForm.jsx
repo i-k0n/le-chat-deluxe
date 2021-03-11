@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import axios from 'axios'
 
+import logo from '../assets/le-chat-logo.png'
+
 export default function LoginForm() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -28,22 +30,15 @@ export default function LoginForm() {
   }
 
   return (
-    <div className="wrapper">
-      <div className="form">
-        <h1 className="title">Chat Application</h1>
-        <form onSubmit={handleSubmit}>
-          <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="input" placeholder="Username" required />
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="input" placeholder="Password" required />
-          <div align="center">
-            <button type="submit" className="button">
-              <span>Start Chatting</span>
-            </button>
-          </div>
-          <h2 className="error">{error}</h2>
-        </form>
-
-      </div>
-      
+    <div className="login-container">
+      <img className="login-logo" src={logo} alt="Le Chat" />
+      <form onSubmit={handleSubmit}  className="login-form">
+        <label className="login-text">Please enter your credentials</label>
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="login-input" placeholder="Username" required />
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="login-input" placeholder="Password" required />
+          <button type="submit" className="login-button">Sign In</button>
+        <h2 className="login-error">{error}</h2>
+      </form>      
     </div>
   )
 }
