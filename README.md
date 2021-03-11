@@ -1,4 +1,7 @@
 # Le Chat Deluxe
+![Le Chat Header](le-chat-github-header.png)
+
+---
 
 ![Le Chat Deluxe Preview](le-chat-deluxe-preview.png)
 
@@ -16,7 +19,7 @@ Le Chat Deluxe is a group chat application. It started as a UI design project wh
 
 As this is mostly a UI design challenge, there will be no new features added once the project is fully styled.
 
-## Stage
+## Status
 
 Le Chat Deluxe is a work-in-progress. The app currently is fully functioning due to being a customized Chat Engine app. The chat feed (middle panel) is currently the only fully-styled section.
 
