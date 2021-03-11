@@ -1,7 +1,7 @@
 import generalAvatar from '../assets/general-avatar.png'
 
-export default function ChatListCard({ props, currentChat, activeChat}) {
-  const chat = props.find(prop => prop.id === parseInt(currentChat))
+export default function ChatListCard({ props, chats, currentChat, activeChat, onChatClick }) {
+  const chat = chats.find(chat => chat.id === parseInt(currentChat))
 
   // console.log("card props: ", props)
 
@@ -14,12 +14,24 @@ export default function ChatListCard({ props, currentChat, activeChat}) {
     }
   }
 
-  // console.log("current chat: ", currentChat)
-  // console.log("active chat: ", activeChat)
-  // chat.id
-  // chat.title
-  // chat.last_message.text
-  // chat.created
+  // check if user has read the latest message from the chat
+  const readLastMessage = (chatId) => {
+    // default to true
+    let readLastMessage = true
+    // loop through people
+    // console.log("chatId: ", chatId, "props.chats[currentChat]", props.chats[chatId])
+    props.chats[chatId].people.forEach(chat_person => {
+        // if current person is the same as the current user
+        // console.log("if: (props.username) ", props.userName, " === (chat_person.person.username) ", chat_person.person.username, props.userName === chat_person.person.username)
+        if(props.userName === chat_person.person.username) {
+            // check their last message id vs person's last read message
+            readLastMessage = chat.last_message.id === chat_person.last_read
+            // console.log(props.chats[currentChat].title, readLastMessage)
+        }
+    })
+    console.log(props.chats[currentChat].title, readLastMessage)
+    return readLastMessage
+  }
 
   // parse last message time
   function daySinceSent(date) {
@@ -43,11 +55,14 @@ export default function ChatListCard({ props, currentChat, activeChat}) {
   const isActiveChat = parseInt(currentChat) === parseInt(activeChat)
 
   return (
-    <div className={`conversation-container${isActiveChat ? ' active' : ''}`}>
+    <div className={`conversation-container${isActiveChat ? ' active' : ''}`} onClick={() => onChatClick(chat.id)} >
       <div className="conversation-content">
         <img className="conversation-avatar" src={getAvatar} alt={getPersonObj?.first_name || chat?.title} />
         <div className="conversation-info-container">
-          <div className="conversation-title">{chat?.title}</div>
+          <div className="conversation-title">
+            {chat?.title}
+            {!readLastMessage(chat.id) && <div className="conversation-unread" />}
+          </div>
           <div className="conversation-last-message">{lastMessage}</div>
         </div>
       </div>
