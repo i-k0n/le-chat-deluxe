@@ -76,7 +76,7 @@ export default function ChatList(props) {
                 down: { rotate: 0 },
                 up: { rotate: -180}
               }}
-              transition={{ duration: 0.05, ease: "linear" }}
+              transition={{ duration: 0.15, ease: "linear" }}
             >
               <ExpandMoreRoundedIcon className="conversations-add-toggle-icon" />
             </motion.button>
