@@ -105,17 +105,79 @@ input, button {
 
 /* CONVERSATIONS LIST */
 
-.conversations-header {
+.conversations-list-header {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 1rem;
   font-size: 1rem;
-  color: #E8BDAC;
+  color: #F0ECE4;
   font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
 }
 
 .conversations-title {
+  color: #E8BDAC;
+}
 
+.conversations-add-toggle {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #F0ECE4;
+  border: 0;
+  transform: rotate(0);
+  transition: all 150ms ease;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.show-add-form {
+  transform: rotate(180deg)
+}
+
+.conversations-add-form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 1rem 1rem;
+  transition: all 150ms ease;
+}
+
+.conversations-add-input {
+  display: flex;
+  flex-grow: 1;
+  font-size: .875rem;
+  background-color: #66645F;
+  height: 2rem;
+  border-radius: .5rem;
+  border: 0;
+  padding: 0 1rem;
+  color: #F0ECE4;
+  min-width: 8rem;
+}
+
+.conversations-add-button {
+  border: 0;
+  color: #E8BDAC;
+  background-color: transparent;
+  height: 28px;
+  width: 28px;
+  padding: 0;
+  margin-left: .5rem;
 }
 
 .conversation-container {
@@ -361,10 +423,10 @@ input, button {
 
 .send-button {
   border: 0;
-    color: #E8BDAC;
-    background-color: transparent;
-    height: 40px;
-    width: 40px;
-    padding: 0;
-    margin-left: .5rem;
+  color: #E8BDAC;
+  background-color: transparent;
+  height: 40px;
+  width: 40px;
+  padding: 0;
+  margin-left: .5rem;
 }
