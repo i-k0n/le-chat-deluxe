@@ -32,7 +32,7 @@ export default function LoginForm() {
   return (
     <div className="login-container">
       <img className="login-logo" src={logo} alt="Le Chat" />
-      <form onSubmit={handleSubmit}  className="login-form">
+      <form onSubmit={handleSubmit} className="login-form">
         <label className="login-text">Please enter your credentials</label>
         <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} className="login-input" placeholder="Username" required />
         <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="login-input" placeholder="Password" required />
