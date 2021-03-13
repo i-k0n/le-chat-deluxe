@@ -1,5 +1,8 @@
 import generalAvatar from '../assets/general-avatar.png'
 
+// parse last message time
+import { daySinceSent } from '../utilities/dateToString'
+
 export default function ChatListCard({ props, chats, currentChat, activeChat, onChatClick }) {
   const chat = chats.find(chat => chat.id === parseInt(currentChat))
 
@@ -29,16 +32,6 @@ export default function ChatListCard({ props, chats, currentChat, activeChat, on
     })
     // console.log(props.chats[currentChat].title, readLastMessage)
     return readLastMessage
-  }
-
-  // parse last message time
-  function daySinceSent(date) {
-    if (!date) return ''
-    const day = date.substr(8,2)
-    const month = date.substr(5,2)
-    const year = date.substr(0,4)
-    const sent = new Date(`${month} ${day} ${year}`).toString()
-    return sent.substr(4, 6)
   }
   
   // show last message in chat list card
