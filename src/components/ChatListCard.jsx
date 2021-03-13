@@ -19,17 +19,15 @@ export default function ChatListCard({ props, chats, currentChat, activeChat, on
     // default to true
     let readLastMessage = true
     // loop through people
-    // console.log("chatId: ", chatId, "props.chats[currentChat]", props.chats[chatId])
     props.chats[chatId].people.forEach(chat_person => {
         // if current person is the same as the current user
-        // console.log("if: (props.username) ", props.userName, " === (chat_person.person.username) ", chat_person.person.username, props.userName === chat_person.person.username)
         if(props.userName === chat_person.person.username) {
             // check their last message id vs person's last read message
             readLastMessage = chat.last_message.id === chat_person.last_read
             // console.log(props.chats[currentChat].title, readLastMessage)
         }
     })
-    console.log(props.chats[currentChat].title, readLastMessage)
+    // console.log(props.chats[currentChat].title, readLastMessage)
     return readLastMessage
   }
 
