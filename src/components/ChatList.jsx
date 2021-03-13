@@ -3,14 +3,16 @@ import ChatListCard from './ChatListCard'
 import { newChat } from 'react-chat-engine'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ChatList(props) {
   const [value, setValue] = useState('')
   const [showAddChatForm, setShowAddChatForm] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const { chats, activeChat, userName, onChatClick } = props
   const chat = chats && chats[activeChat]
 
-  console.log("props: ", props)
+  // console.log("props: ", props)
   // console.log("chats: ", chats)
 
   const currentUser = chat?.people.filter((person, index) => person.person.username === userName)
@@ -66,12 +68,43 @@ export default function ChatList(props) {
       <div className="conversations-container">
         <div className="conversations-list-header">
           <div className="conversations-title">Conversations</div>
-          <button className={`conversations-add-toggle${showAddChatForm ? " show-add-form" : ""}`} onClick={toggleAddChatForm}><ExpandMoreRoundedIcon className="conversations-add-toggle-icon" /></button>
+            <motion.button
+              className={`conversations-add-toggle`}
+              onClick={() => setIsOpen(!isOpen)}
+              animate={isOpen ? "down" : "up"}
+              variants={{
+                down: { rotate: 0 },
+                up: { rotate: -180}
+              }}
+              transition={{ duration: 0.05, ease: "linear" }}
+            >
+              <ExpandMoreRoundedIcon className="conversations-add-toggle-icon" />
+            </motion.button>
         </div>
-        {showAddChatForm && <form key="add-form" className="conversations-add-form" onSubmit={handleSubmit}>
-          <input type="text" className="conversations-add-input" placeholder="Enter chat title..." onChange={handleChange} />
-          <button type="submit" className="conversations-add-button"><AddCircleIcon /></button>
-        </form>}
+        <AnimatePresence>
+        {isOpen && 
+        <motion.div 
+          key="add-form"
+          className="conversations-add-form-container"
+          initial="collapsed"
+          animate="open"
+          exit="collapsed"
+          variants={{
+            open: { opacity: 1, height: "auto" },
+            collapsed: { opacity: 0, height: 0 }
+          }}
+          transition={{ duration: .15, type: "tween", ease: "circOut" }}
+        >
+          <form 
+            key="add-form" 
+            className="conversations-add-form" 
+            onSubmit={handleSubmit}
+          >
+            <input type="text" className="conversations-add-input" placeholder="Enter chat title..." onChange={handleChange} />
+            <button type="submit" className="conversations-add-button"><AddCircleIcon /></button>
+          </form>
+        </motion.div>}
+        </AnimatePresence>
         <div className="conversations-list">
           {renderChats()}
         </div>

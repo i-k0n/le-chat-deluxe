@@ -114,6 +114,9 @@ input, button {
   font-size: 1rem;
   color: #F0ECE4;
   font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
+  position: relative;
+  z-index: 10;
+  background-color: #373635;
 }
 
 .conversations-title {
@@ -129,24 +132,14 @@ input, button {
   background-color: transparent;
   color: #F0ECE4;
   border: 0;
-  transform: rotate(0);
-  transition: all 150ms ease;
   outline: none;
   cursor: pointer;
   position: relative;
 }
 
-.example-enter {
-  opacity: 0.01;
-}
-
-.example-enter.example-enter-active {
-  opacity: 1;
-  transition: opacity 500ms ease-in;
-}
-
-.show-add-form {
-  transform: rotate(180deg)
+.conversations-add-form-container {
+  position: relative;
+  z-index: 5;
 }
 
 .conversations-add-form {
@@ -154,7 +147,6 @@ input, button {
   align-items: center;
   justify-content: space-between;
   padding: .5rem 1rem 1rem;
-  transition: all 150ms ease;
 }
 
 .conversations-add-input {
@@ -176,7 +168,7 @@ input, button {
   background-color: transparent;
   height: 28px;
   width: 28px;
-  padding: 0;
+  padding: 2px;
   margin-left: .5rem;
 }
 
