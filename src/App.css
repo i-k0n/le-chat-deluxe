@@ -69,7 +69,7 @@ input, button {
 
 /* LEFT PANEL */
 
-.left-panel {
+.left-panel, .right-panel {
   background-color: #373635;
   display: flex;
   flex-direction: column;
@@ -237,7 +237,7 @@ input, button {
 
 /* CHAT HEADER */
 
-.chat-title-container {
+.chat-header-title-container {
   display: flex;
   height: 3rem;
   font-size: 1rem;
@@ -254,19 +254,14 @@ input, button {
 
 }
 
-.chat-title {
+.chat-header-title {
   font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
-  
   color: #F0ECE4;
 }
 
-.chat-clock {
+.chat-header-clock {
   color: #777;
   display: flex;
-}
-
-.clock-time {
-
 }
 
 .clock-date {
@@ -421,4 +416,108 @@ input, button {
   width: 40px;
   padding: 0;
   margin-left: .5rem;
+}
+
+/* CHAT SETTINGS */
+
+
+.chat-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3.5rem 0 1rem;
+  font-family: 'Open Sans', 'Noto Sans', Roboto, sans-serif;
+}
+
+.chat-avatar {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+}
+
+.chat-title {
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #F0ECE4;
+  font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
+  margin-top: .75rem;
+}
+
+.chat-participants-container {
+  padding: 1rem;
+  gap: .25rem;
+}
+
+.chat-participants-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-participants-title {
+  font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
+  font-size: 1rem;
+  color: #E8BDAC;
+}
+
+.chat-participants-count {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: #F0ECE4;
+  color: #35332F;
+  font-size: 1.125rem;
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: .125rem;
+}
+.chat-participants {
+  display: flex;
+  flex-direction: row;
+}
+.person-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: .25rem;
+  padding: .5rem;
+}
+
+.person-container:first-of-type {
+  padding-left: 0;
+}
+
+.person-avatar-container {
+  display: flex;
+  position: relative;
+}
+.person-avatar {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+.person-online-status {
+  width: .675rem;
+  height: .675rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border: 1px solid #F0ECE4;
+  border-radius: 50%;
+}
+.online {
+  background-color: #32CD32;
+}
+.offline {
+  background-color: #CD3232;
+}
+
+.person-name {
+  font-size: .875rem;
+  color: #aaaaaa;
+  font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
+  justify-self: center;
 }
