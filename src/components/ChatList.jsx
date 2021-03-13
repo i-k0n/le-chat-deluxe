@@ -1,25 +1,23 @@
+import { useState } from 'react'
 import ChatListCard from './ChatListCard'
+import { newChat } from 'react-chat-engine'
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
 
 export default function ChatList(props) {
-  const { chats, activeChat, userName } = props
+  const [value, setValue] = useState('')
+  const [showAddChatForm, setShowAddChatForm] = useState(false)
+  const { chats, activeChat, userName, onChatClick } = props
   const chat = chats && chats[activeChat]
 
-  // console.log("props: ", props)
+  console.log("props: ", props)
   // console.log("chats: ", chats)
 
   const currentUser = chat?.people.filter((person, index) => person.person.username === userName)
   const userAvatar = currentUser && currentUser[0].person.avatar
   const user = currentUser && currentUser[0].person.first_name + " " + currentUser[0].person.last_name.substring(0, 1)
 
-  // const readLastMessage = () => {
-  //   let readLastMessage = true
-  //   chat.people.forEach(chat_person => {
-  //       if(userName === chat_person.person.username) {
-  //           readLastMessage = chat.last_message.id === chat_person.last_read
-  //       }
-  //   })
-  //   return readLastMessage
-  // }
+  
 
   const sortChats = chats ? Object.values(chats) : []
     sortChats.sort((a, b) => { 
@@ -28,7 +26,7 @@ export default function ChatList(props) {
       return new Date(bDate) - new Date(aDate); 
   })
 
-  console.log(sortChats)
+  // console.log(sortChats)
 
   const renderChats = () => {
     // return (chats && Object.keys(chats).map((chat, index) => {
@@ -36,8 +34,26 @@ export default function ChatList(props) {
       if (!chat) return <div key={`chat_${chat.id}`} />
     
       // console.log("chats: ", Object.keys(chats))
-      return <ChatListCard key={chat.id} props={sortChats} currentChat={chat.id} activeChat={activeChat} />;
+      return <ChatListCard key={chat.id} props={props} chats={sortChats} currentChat={chat.id} activeChat={activeChat} onChatClick={onChatClick} />;
     })
+  }
+
+  const toggleAddChatForm = () => {
+    setShowAddChatForm(!showAddChatForm)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const text = value.trim()
+
+    // send props with credentials, new chat title, and an empty callback
+    if (text.length > 0) newChat(props, { title: value }, () => {})
+
+    setValue('')
+  }
+
+  const handleChange = e => {
+    setValue(e.target.value)
   }
 
   return (
@@ -48,10 +64,14 @@ export default function ChatList(props) {
         <div className="user-username">{`@${userName}`}</div>
       </div>
       <div className="conversations-container">
-        <div className="conversations-header">
-          <div className="conversations-title"></div>
-          <div className="conversations-add-form"></div>
+        <div className="conversations-list-header">
+          <div className="conversations-title">Conversations</div>
+          <button className={`conversations-add-toggle${showAddChatForm ? " show-add-form" : ""}`} onClick={toggleAddChatForm}><ExpandMoreRoundedIcon className="conversations-add-toggle-icon" /></button>
         </div>
+        {showAddChatForm && <form key="add-form" className="conversations-add-form" onSubmit={handleSubmit}>
+          <input type="text" className="conversations-add-input" placeholder="Enter chat title..." onChange={handleChange} />
+          <button type="submit" className="conversations-add-button"><AddCircleIcon /></button>
+        </form>}
         <div className="conversations-list">
           {renderChats()}
         </div>
