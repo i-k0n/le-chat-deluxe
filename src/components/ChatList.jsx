@@ -7,7 +7,6 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ChatList(props) {
   const [value, setValue] = useState('')
-  const [showAddChatForm, setShowAddChatForm] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
   const { chats, activeChat, userName, onChatClick } = props
   const chat = chats && chats[activeChat]
@@ -40,10 +39,6 @@ export default function ChatList(props) {
     })
   }
 
-  const toggleAddChatForm = () => {
-    setShowAddChatForm(!showAddChatForm)
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault()
     const text = value.trim()
@@ -68,18 +63,18 @@ export default function ChatList(props) {
       <div className="conversations-container">
         <div className="conversations-list-header">
           <div className="conversations-title">Conversations</div>
-            <motion.button
-              className={`conversations-add-toggle`}
-              onClick={() => setIsOpen(!isOpen)}
-              animate={isOpen ? "down" : "up"}
-              variants={{
-                down: { rotate: 0 },
-                up: { rotate: -180}
-              }}
-              transition={{ duration: 0.15, ease: "linear" }}
-            >
-              <ExpandMoreRoundedIcon className="conversations-add-toggle-icon" />
-            </motion.button>
+          <motion.button
+            className={`conversations-add-toggle`}
+            onClick={() => setIsOpen(!isOpen)}
+            animate={isOpen ? "down" : "up"}
+            variants={{
+              down: { rotate: 0 },
+              up: { rotate: -180}
+            }}
+            transition={{ duration: 0.15, ease: "linear" }}
+          >
+            <ExpandMoreRoundedIcon className="conversations-add-toggle-icon" />
+          </motion.button>
         </div>
         <AnimatePresence>
         {isOpen && 
