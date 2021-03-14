@@ -1,12 +1,20 @@
+import { useState } from 'react'
 import generalAvatar from '../assets/general-avatar.png'
+import ExpandMoreRoundedIcon from '@material-ui/icons/ExpandMoreRounded';
+import DeleteForeverRoundedIcon from '@material-ui/icons/DeleteForeverRounded';
+import { motion, AnimatePresence } from 'framer-motion'
 
 export default function ChatSettings(props) {
+  const [isPhotosOpen, setIsPhotosOpen] = useState(false)
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+
   const { chats, activeChat } = props
   const chat = chats && chats[activeChat]
   const title = chats && chat.title
 
   // console.log("Chat Settings props: ", props)
-  console.log("Chat Settings people: ", chat?.people)
+  // console.log("Chat Settings people: ", chat?.people)
+  console.log("Chat Settings props: ", chat)
   
   // get Avatar link
   
@@ -37,6 +45,12 @@ export default function ChatSettings(props) {
     })
   }
 
+  const getAttachments = attachments => attachments && attachments.map(attachment => {
+    // return <img key={attachment.id} src={attachment.file} alt="Attachment" />
+    return attachment.id
+  })
+
+
   return (
     <div className="right-panel">
       <div className="chat-info">
@@ -54,17 +68,85 @@ export default function ChatSettings(props) {
       </div>
       <div className="chat-files-container">
         <div className="chat-files-header">
-          <div className="chat-files-title">Photos</div>
+          <div className="chat-files-title">
+            Photos
+          </div>
+          <motion.button
+            className={`conversations-add-toggle`}
+            onClick={() => setIsPhotosOpen(!isPhotosOpen)}
+            animate={isPhotosOpen ? "down" : "up"}
+            variants={{
+              down: { rotate: 0 },
+              up: { rotate: -180}
+            }}
+            transition={{ duration: 0.15, ease: "linear" }}
+          >
+            <ExpandMoreRoundedIcon className="conversations-add-toggle-icon" />
+          </motion.button>
         </div>
-        <div className="chat-files">
-          Files List
-        </div>
+        <AnimatePresence>
+          {isPhotosOpen && (
+            <motion.div 
+              className="chat-files"
+              key="chat-files"
+              initial="collapsed"
+              animate="open"
+              exit="collapsed"
+              variants={{
+                open: { opacity: 1, height: "auto" },
+                collapsed: { opacity: 0, height: 0 }
+              }}
+              transition={{ duration: .15, type: "tween", ease: "circOut" }}
+            >
+              {chat && chat?.attachments.map(attachment => {
+                return (
+                  <div className="chat-file-container">
+                    <img key={attachment.id} className="chat-file" src={attachment.file} alt="Attachment" />
+                  </div>
+                )
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
       <div className="chat-settings-container">
         <div className="chat-settings-header">
-          <div className="chat-settings-title">Settings</div>
+          <div className="chat-settings-title">
+            Settings
+          </div>
+          <motion.button
+            className={`conversations-add-toggle`}
+            onClick={() => setIsSettingsOpen(!isSettingsOpen)}
+            animate={isSettingsOpen ? "down" : "up"}
+            variants={{
+              down: { rotate: 0 },
+              up: { rotate: -180}
+            }}
+            transition={{ duration: 0.15, ease: "linear" }}
+          >
+            <ExpandMoreRoundedIcon className="conversations-add-toggle-icon" />
+          </motion.button>
         </div>
-        <button className="chat-delete-button">Delete Conversation</button>
+        <AnimatePresence>
+          {isSettingsOpen && (
+            <motion.div
+              key="chat-delete"
+              initial="collapsed"
+              animate="open"
+              exit="collapsed"
+              variants={{
+                open: { opacity: 1, height: "auto" },
+                collapsed: { opacity: 0, height: 0 }
+              }}
+              transition={{ duration: .15, type: "tween", ease: "circOut" }}
+            >
+              <button className="chat-delete-button">
+                <DeleteForeverRoundedIcon style={{ marginRight: ".25rem" }} />
+                Delete Conversation
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   )

@@ -443,7 +443,7 @@ input, button {
   margin-top: .75rem;
 }
 
-.chat-participants-container {
+.chat-participants-container, .chat-files-container, .chat-settings-container {
   padding: 1rem;
   gap: .25rem;
 }
@@ -451,9 +451,18 @@ input, button {
 .chat-participants-header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0;
+  font-size: 1rem;
+  color: #F0ECE4;
+  font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
+  position: relative;
+  z-index: 10;
+  background-color: #373635;
 }
 
-.chat-participants-title {
+.chat-participants-title, .chat-files-title, .chat-settings-title {
   font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
   font-size: 1rem;
   color: #E8BDAC;
@@ -500,19 +509,19 @@ input, button {
   border-radius: 50%;
 }
 .person-online-status {
-  width: .675rem;
-  height: .675rem;
+  width: .75rem;
+  height: .75rem;
   position: absolute;
   bottom: 0;
   right: 0;
-  border: 1px solid #F0ECE4;
+  border: .125rem solid #373635;
   border-radius: 50%;
 }
 .online {
-  background-color: #32CD32;
+  background-color: #39CE6B;
 }
 .offline {
-  background-color: #CD3232;
+  background-color: #D95D5D;
 }
 
 .person-name {
@@ -520,4 +529,71 @@ input, button {
   color: #aaaaaa;
   font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
   justify-self: center;
+}
+
+.chat-files-container {
+  border-top: 1px solid #4B4948;
+  border-bottom: 1px solid #4B4948;
+}
+
+.chat-files-header, .chat-settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  font-size: 1rem;
+  color: #F0ECE4;
+  font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
+  position: relative;
+  z-index: 10;
+  background-color: #373635;
+}
+
+.chat-files-title {}
+.chat-files {
+  padding: .5rem 0;
+}
+
+.chat-file-container {
+  position: relative;
+  display: block;
+  width: 25%;
+  max-width: 25%;
+  height: auto;
+  max-height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: .25rem;
+}
+
+.chat-file-container::before {
+  display: block;
+  content: "";
+  padding-top: 100%;
+}
+
+.chat-file {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.chat-delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% - 1rem);
+  font-family: Roboto, 'Open Sans', sans-serif;
+  font-size: 1.0625rem;
+  color: #D30000;
+  background-color: #F0ECE4;
+  border: 0;
+  border-radius: .5rem;
+  padding: .5rem 1rem;
+  margin: .5rem;
 }
