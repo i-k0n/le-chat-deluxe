@@ -444,8 +444,16 @@ input, button {
 }
 
 .chat-participants-container, .chat-files-container, .chat-settings-container {
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
   gap: .25rem;
+  background-color: #373635;
+  transition: background-color 150ms ease-out;
+}
+
+.expanded {
+  background-color: #413F3F;
 }
 
 .chat-participants-header {
@@ -459,7 +467,6 @@ input, button {
   font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
   position: relative;
   z-index: 10;
-  background-color: #373635;
 }
 
 .chat-participants-title, .chat-files-title, .chat-settings-title {
@@ -546,7 +553,6 @@ input, button {
   font-family: 'Noto Sans', 'Open Sans', Roboto, sans-serif;
   position: relative;
   z-index: 10;
-  background-color: #373635;
 }
 
 .chat-files-title {}
@@ -583,6 +589,10 @@ input, button {
   border: 0;
 }
 
+.chat-delete-button-container {
+  overflow: hidden;
+}
+
 .chat-delete-button {
   display: flex;
   align-items: center;
@@ -596,4 +606,8 @@ input, button {
   border-radius: .5rem;
   padding: .5rem 1rem;
   margin: .5rem;
+}
+
+.chat-settings-container {
+  gap: .5rem;
 }

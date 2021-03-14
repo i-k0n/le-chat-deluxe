@@ -14,7 +14,7 @@ export default function ChatSettings(props) {
 
   // console.log("Chat Settings props: ", props)
   // console.log("Chat Settings people: ", chat?.people)
-  console.log("Chat Settings props: ", chat)
+  // console.log("Chat Settings props: ", chat)
   
   // get Avatar link
   
@@ -45,11 +45,6 @@ export default function ChatSettings(props) {
     })
   }
 
-  const getAttachments = attachments => attachments && attachments.map(attachment => {
-    // return <img key={attachment.id} src={attachment.file} alt="Attachment" />
-    return attachment.id
-  })
-
 
   return (
     <div className="right-panel">
@@ -66,7 +61,7 @@ export default function ChatSettings(props) {
           {chat && getParticipants(chat.people)}
         </div>
       </div>
-      <div className="chat-files-container">
+      <div className={`chat-files-container${isPhotosOpen ? " expanded" : ""}`}>
         <div className="chat-files-header">
           <div className="chat-files-title">
             Photos
@@ -74,10 +69,10 @@ export default function ChatSettings(props) {
           <motion.button
             className={`conversations-add-toggle`}
             onClick={() => setIsPhotosOpen(!isPhotosOpen)}
-            animate={isPhotosOpen ? "down" : "up"}
+            animate={isPhotosOpen ? "up" : "down"}
             variants={{
               down: { rotate: 0 },
-              up: { rotate: -180}
+              up: { rotate: 180}
             }}
             transition={{ duration: 0.15, ease: "linear" }}
           >
@@ -109,7 +104,7 @@ export default function ChatSettings(props) {
           )}
         </AnimatePresence>
       </div>
-      <div className="chat-settings-container">
+      <div className={`chat-settings-container${isSettingsOpen ? " expanded" : ""}`}>
         <div className="chat-settings-header">
           <div className="chat-settings-title">
             Settings
@@ -117,10 +112,10 @@ export default function ChatSettings(props) {
           <motion.button
             className={`conversations-add-toggle`}
             onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-            animate={isSettingsOpen ? "down" : "up"}
+            animate={isSettingsOpen ? "up" : "down"}
             variants={{
               down: { rotate: 0 },
-              up: { rotate: -180}
+              up: { rotate: 180}
             }}
             transition={{ duration: 0.15, ease: "linear" }}
           >
@@ -130,6 +125,7 @@ export default function ChatSettings(props) {
         <AnimatePresence>
           {isSettingsOpen && (
             <motion.div
+              className="chat-delete-button-container"
               key="chat-delete"
               initial="collapsed"
               animate="open"

@@ -66,10 +66,10 @@ export default function ChatList(props) {
           <motion.button
             className={`conversations-add-toggle`}
             onClick={() => setIsOpen(!isOpen)}
-            animate={isOpen ? "down" : "up"}
+            animate={isOpen ? "up" : "down"}
             variants={{
               down: { rotate: 0 },
-              up: { rotate: -180}
+              up: { rotate: 180}
             }}
             transition={{ duration: 0.15, ease: "linear" }}
           >
